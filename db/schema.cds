@@ -5,10 +5,17 @@ namespace football.leagues;
 }
 entity FootballLeagues {
   key id : Integer;
-  @mandatory country : String(2);
-  @mandatory name    : String(120);
-  @mandatory level   : Integer 
-  @assert.range: [ 1, 2, 3];
+
+  @mandatory 
+  country : String(2);
+
+  @mandatory 
+  name    : String(120);
+
+  @mandatory 
+  @assert.range: [1, 2, 3] 
+  level   : Integer;
+
   teams: Association to many Teams on teams.footballLeague = $self;
 }
 
