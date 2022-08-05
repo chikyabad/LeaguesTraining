@@ -1,0 +1,96 @@
+############
+# Leagues
+############
+
+###
+GET http://localhost:4004/leagues-service/Leagues?
+#&$expand=teams
+
+###
+POST http://localhost:4004/leagues-service/Leagues
+Content-Type: application/json
+
+{
+ "id": 3,
+ "country": "FR",
+ "name": "France Ligue 1",
+ "level": 1
+}
+
+###
+PATCH  http://localhost:4004/leagues-service/Leagues/1
+Content-Type: application/json
+
+{
+    "name": "La Liga"
+}
+
+############
+# Teams
+############
+
+###
+GET http://localhost:4004/leagues-service/Teams?$expand=players
+
+###
+POST http://localhost:4004/leagues-service/Teams?
+Content-Type: application/json
+
+{
+    "id": 5,
+    "name": "Atlético Madrid",
+    "stadiumName": "Wanda Metropolitano",
+    "city": "Madrid",
+    "footballLeague": {
+        "id": 1
+    }
+}
+
+###
+PATCH http://localhost:4004/leagues-service/Teams/5
+Content-Type: application/json
+
+{
+    "city": "Barcelona"
+}
+
+############
+# Players
+############
+
+###
+GET http://localhost:4004/leagues-service/Players
+
+###
+POST http://localhost:4004/leagues-service/Players
+Content-Type: application/json
+
+{
+    "id": 11122,
+    "name": "Ter",
+    "surname": "Stegen",
+    "number": 34,
+    "team": {
+        "id": 1
+    }
+}
+
+###
+PATCH  http://localhost:4004/leagues-service/Players/5
+Content-Type: application/json
+{
+    "number": 13
+}
+
+###
+POST http://localhost:4004/leagues-service/Players
+Content-Type: application/json
+
+{
+    "id": 10,
+    "name": "Cristian",
+    "surname": "Tartiere",
+    "number": 11,
+    "active": true,
+    "team_id": 1
+}

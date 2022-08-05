@@ -25,7 +25,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: LeaguesService-db
-
+      
   - name: LeaguesService-db-deployer
     type: hdb
     path: gen/db

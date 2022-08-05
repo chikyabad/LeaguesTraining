@@ -1,5 +1,6 @@
 using football.leagues as leagues from '../db/schema';
 
+@path:'leagues-service'
 service LeaguesService
 {       
     entity Leagues as projection on leagues.FootballLeagues;
