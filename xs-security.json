@@ -1,5 +1,33 @@
 {
-  "scopes": [],
-  "attributes": [],
-  "role-templates": []
+    "xsappname": "LeaguesService",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.LeaguesViewer",
+            "description": "LeaguesViewer"
+        },
+        {
+            "name": "$XSAPPNAME.LeaguesAdmin",
+            "description": "LeaguesAdmin"
+        }
+    ],
+    "attributes": [],
+    "role-templates": [
+        {
+            "name": "LeaguesViewer",
+            "description": "generated",
+            "scope-references": [
+                "$XSAPPNAME.LeaguesViewer"
+            ],
+            "attribute-references": []
+        },
+        {
+            "name": "LeaguesAdmin",
+            "description": "generated",
+            "scope-references": [
+                "$XSAPPNAME.LeaguesAdmin"
+            ],
+            "attribute-references": []
+        }
+    ]
 }

@@ -16,6 +16,8 @@ entity FootballLeagues {
   @assert.range: [1, 2, 3] 
   level   : Integer;
 
+  active : Boolean;
+
   teams: Association to many Teams on teams.footballLeague = $self;
 }
 

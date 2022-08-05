@@ -1,3 +1,12 @@
+
+###
+POST http://localhost:4004/leagues-service/DeactivatePlayer
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
 ############
 # Leagues
 ############
@@ -91,9 +100,13 @@ Content-Type: application/json
     "name": "Cristian",
     "surname": "Tartiere",
     "number": 11,
-    "active": true,
+    "active": true,x
     "team_id": 2
 }
 
 ###
 DELETE http://localhost:4004/leagues-service/Players/456
+
+
+
+

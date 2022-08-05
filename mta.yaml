@@ -25,7 +25,8 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: LeaguesService-db
-      
+      - name: LeaguesService-auth
+
   - name: LeaguesService-db-deployer
     type: hdb
     path: gen/db
@@ -34,9 +35,34 @@ modules:
     requires:
       - name: LeaguesService-db
 
+    # -------------------- APPROUTER -----------------------------
+  - name: LeaguesService-approuter
+    # ------------------------------------------------------------
+    type: nodejs
+    path: approuter
+    requires:
+      - name: LeaguesService-auth
+      - name: srv-api
+        group: destinations
+        properties:
+          forwardAuthToken: true
+          strictSSL: true
+          name: srv-binding
+          url: "~{srv-url}"
+
 resources:
   - name: LeaguesService-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
+
+  - name: LeaguesService-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: LeaguesService-${org}-${space}
+        tenant-mode: dedicated

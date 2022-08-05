@@ -43,4 +43,16 @@ module.exports = cds.service.impl(async function () {
          
     })
 
+    this.on("DeactivatePlayer", async (req) => {
+
+        const result = await UPDATE('Players').set({ active: false}).where({ ID: req.data.id })
+
+        if (result == 0) {
+            return req.reject(404, `Player ${req.data.id} not found`);
+        }
+
+        return SELECT.one.from('Players').where({ ID: req.data.id})
+
+    } )
+
 });
