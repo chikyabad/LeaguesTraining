@@ -1,59 +1,62 @@
 {
-  "name": "LeaguesService",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^5",
-    "@sap/hana-client": "^2.13.22",
-    "express": "^4",
-    "hdb": "^0.19.0"
-  },
-  "devDependencies": {
-    "@sap/hdi-deploy": "4.4.1",
-    "sqlite3": "^5.0.4"
-  },
-  "scripts": {
-    "start": "cds run"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es2020": true,
-      "node": true,
-      "jest": true,
-      "mocha": true
+    "name": "LeaguesService",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^5",
+        "@sap/hana-client": "^2.13.22",
+        "express": "^4",
+        "hdb": "^0.19.0"
     },
-    "globals": {
-      "SELECT": true,
-      "INSERT": true,
-      "UPDATE": true,
-      "DELETE": true,
-      "CREATE": true,
-      "DROP": true,
-      "CDL": true,
-      "CQL": true,
-      "CXL": true,
-      "cds": true
+    "devDependencies": {
+        "@sap/hdi-deploy": "4.4.1",
+        "sqlite3": "^5.0.4"
     },
-    "rules": {
-      "no-console": "off",
-      "require-atomic-updates": "off"
+    "scripts": {
+        "start": "cds run"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana-cloud"
+            },
+            "auth": {
+                "kind": "xsuaa"
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    },
+    "odata": {
+        "flavor": "x4"
     }
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "hana-cloud"
-      },
-      "auth": {
-        "kind": "xsuaa"
-      }
-    },
-    "hana": {
-      "deploy-format": "hdbtable"
-    }
-  }
 }

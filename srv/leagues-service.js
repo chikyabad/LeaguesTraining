@@ -6,8 +6,7 @@ const cds = require("@sap/cds");
   * The service implementation with all service handlers
   */
 module.exports = cds.service.impl(async function () {
-
-    
+  
     const { Players, Teams } = this.entities();
 
     this.before("CREATE", Players, async (req) => {
@@ -27,5 +26,21 @@ module.exports = cds.service.impl(async function () {
         }
 
     });
+
+    this.after("CREATE", Players, async (req) => {
+         
+        await UPDATE('Teams').set({ numberPlayers: { '+=': 1 }}).where({ ID: req.team_id })
+
+    })
+
+    this.before("DELETE", Players, async (req) => {
+
+        const player =  await SELECT.one.from('Players').where({ ID: req.data.id})
+
+        if (player) {
+            await UPDATE('Teams').set({ numberPlayers: { '-=': 1 }}).where({ ID: player.team_id })
+        }
+         
+    })
 
 });

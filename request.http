@@ -30,7 +30,7 @@ Content-Type: application/json
 ############
 
 ###
-GET http://localhost:4004/leagues-service/Teams?$expand=players
+GET http://localhost:4004/leagues-service/Teams/2
 
 ###
 POST http://localhost:4004/leagues-service/Teams?
@@ -87,10 +87,13 @@ POST http://localhost:4004/leagues-service/Players
 Content-Type: application/json
 
 {
-    "id": 10,
+    "id": 32,
     "name": "Cristian",
     "surname": "Tartiere",
     "number": 11,
     "active": true,
-    "team_id": 1
+    "team_id": 2
 }
+
+###
+DELETE http://localhost:4004/leagues-service/Players/456
